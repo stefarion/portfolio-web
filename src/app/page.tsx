@@ -1,8 +1,19 @@
 import { Column, IconButton, Row, Schema, Meta, Text } from "@once-ui-system/core";
 import { home, about, person, baseURL, social } from "@/resources";
 import { Projects } from "@/components/work/Projects";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { SpotifyArtists } from "@/components/about/SpotifyArtists";
+import Image from "next/image";
+import { FaFutbol, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { HiOutlineDocumentText, HiOutlineEnvelope } from "react-icons/hi2";
+import {
+  HiOutlineAcademicCap,
+  HiOutlineCircleStack,
+  HiOutlineCodeBracketSquare,
+  HiOutlineCpuChip,
+  HiOutlineDevicePhoneMobile,
+  HiOutlinePuzzlePiece,
+} from "react-icons/hi2";
+import { LuGamepad2 } from "react-icons/lu";
 import styles from "./page.module.scss";
 
 export async function generateMetadata() {
@@ -23,6 +34,39 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  const interests = [
+    {
+      icon: <HiOutlineCpuChip />,
+      title: "Backend System",
+      description: "Django",
+    },
+    {
+      icon: <HiOutlineCodeBracketSquare />,
+      title: "Web Development",
+      description: "Next.js, JavaScript, Tailwind CSS",
+    },
+    {
+      icon: <HiOutlineDevicePhoneMobile />,
+      title: "Mobile Development",
+      description: "Flutter, Dart",
+    },
+    {
+      icon: <HiOutlineCircleStack />,
+      title: "Database Management",
+      description: "PostgreSQL",
+    },
+    {
+      icon: <LuGamepad2 />,
+      title: "Gaming",
+      description: "Honkai Star Rail, eFootball, NBA 2K",
+    },
+    {
+      icon: <FaFutbol />,
+      title: "Sports",
+      description: "Unofficial Manchester United Football Analyst",
+    },
+  ];
+
   const heroLinks = [
     {
       label: "LinkedIn",
@@ -118,11 +162,58 @@ export default function Home() {
           <h2 id="about-heading" className={styles.sectionTitle}>
             About Me
           </h2>
-          <p className={styles.sectionIntro}>
-            I am Stefanus Tan Jaya, a Jakarta-based software engineer focused on building reliable
-            web applications, mobile apps, and practical software solutions. This section is ready
-            for a fuller biography, education details, interests, and technical profile.
-          </p>
+          <div className={styles.aboutGrid}>
+            <div className={styles.profileFrame}>
+              <Image
+                src="/media/about/myself.jpeg"
+                alt="Stefanus Tan Jaya"
+                width={400}
+                height={500}
+                className={styles.profileImage}
+                priority
+              />
+            </div>
+            <div className={styles.aboutSide}>
+              <div className={styles.aboutCard}>
+                <div className={styles.cardHeader}>
+                  <h3>Currently educated in</h3>
+                  <HiOutlineAcademicCap aria-hidden="true" />
+                </div>
+                <div className={styles.educationRow}>
+                  <Image
+                    src="/media/about/makara-ui.png"
+                    alt="University of Indonesia logo"
+                    width={64}
+                    height={64}
+                    className={styles.educationLogo}
+                  />
+                  <div>
+                    <p className={styles.educationTitle}>University of Indonesia</p>
+                    <p className={styles.educationSubtitle}>Faculty of Computer Science</p>
+                  </div>
+                </div>
+              </div>
+              <SpotifyArtists />
+            </div>
+          </div>
+
+          <div className={styles.interestCard}>
+            <div className={styles.cardHeader}>
+              <h3>Interests</h3>
+              <HiOutlinePuzzlePiece aria-hidden="true" />
+            </div>
+            <div className={styles.interestGrid}>
+              {interests.map((interest) => (
+                <div className={styles.interestItem} key={interest.title}>
+                  <span className={styles.interestIcon}>{interest.icon}</span>
+                  <div>
+                    <p className={styles.interestTitle}>{interest.title}</p>
+                    <p className={styles.interestDescription}>{interest.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section id="projects" className={styles.section} aria-labelledby="projects-heading">

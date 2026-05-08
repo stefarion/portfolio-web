@@ -1,0 +1,119 @@
+.aboutCard {
+  padding: clamp(1rem, 1.7vw, 1.35rem);
+  background: rgba(0, 0, 0, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.22);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #f7f3ea;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.12rem, 1.7vw, 1.35rem);
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.cardHeader svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+}
+
+.artistList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.artistItem {
+  display: grid;
+  grid-template-columns: 1.5rem 3rem minmax(0, 1fr) 1.25rem;
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 4.05rem;
+  padding: 0.5rem 0.55rem;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.artistItem:hover,
+.artistItem:focus-visible,
+.artistItem[data-playing="true"] {
+  background: rgba(255, 255, 255, 0.065);
+  outline: none;
+}
+
+.artistItem[data-playing="true"] {
+  transform: translateX(0.125rem);
+}
+
+.artistRank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 100%;
+  color: rgba(247, 243, 234, 0.58);
+  font-weight: 850;
+  text-align: center;
+}
+
+.artistImage {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 999rem;
+}
+
+.artistName {
+  overflow: hidden;
+  margin: 0;
+  color: rgba(247, 243, 234, 0.88);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spotifyPulse {
+  display: block;
+  justify-self: center;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: rgba(247, 243, 234, 0.42);
+  border-radius: 999rem;
+  opacity: 0;
+  transition:
+    opacity 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.artistItem:hover .spotifyPulse,
+.artistItem:focus-visible .spotifyPulse {
+  opacity: 0.55;
+}
+
+.artistItem[data-playing="true"] .spotifyPulse {
+  background: #1ed760;
+  box-shadow: 0 0 0.75rem rgba(30, 215, 96, 0.48);
+  opacity: 1;
+}
