@@ -1,8 +1,6 @@
-import { Heading, RevealFx, Column, Row, Schema, Meta, Line } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
+import { Column, IconButton, Row, Schema, Meta, Text } from "@once-ui-system/core";
+import { home, about, person, baseURL, social } from "@/resources";
 import { Projects } from "@/components/work/Projects";
-import { Posts } from "@/components/blog/Posts";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { HiOutlineDocumentText, HiOutlineEnvelope } from "react-icons/hi2";
 import styles from "./page.module.scss";
@@ -68,7 +66,7 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <section className={styles.hero} aria-labelledby="home-hero-title">
+      <section id="home" className={styles.hero} aria-labelledby="home-hero-title">
         <video
           className={styles.video}
           autoPlay
@@ -115,32 +113,66 @@ export default function Home() {
           </ul>
         </div>
       </section>
-      <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
-        <RevealFx translateY="16" delay={0.2}>
-          <Projects range={[1, 1]} />
-        </RevealFx>
-        {routes["/blog"] && (
-          <Column fillWidth gap="24" marginBottom="l">
-            <Row fillWidth paddingRight="64">
-              <Line maxWidth={48} />
-            </Row>
-            <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-              <Row flex={1} paddingLeft="l" paddingTop="24">
-                <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                  Latest from the blog
-                </Heading>
-              </Row>
-              <Row flex={3} paddingX="20">
-                <Posts range={[1, 2]} columns="2" />
-              </Row>
-            </Row>
-            <Row fillWidth paddingLeft="64" horizontal="end">
-              <Line maxWidth={48} />
-            </Row>
-          </Column>
-        )}
-        <Projects range={[2]} />
-        <Mailchimp />
+      <Column as="main" className={styles.main} maxWidth="m" horizontal="center">
+        <section id="about" className={styles.section} aria-labelledby="about-heading">
+          <h2 id="about-heading" className={styles.sectionTitle}>
+            About Me
+          </h2>
+          <p className={styles.sectionIntro}>
+            I am Stefanus Tan Jaya, a Jakarta-based software engineer focused on building reliable
+            web applications, mobile apps, and practical software solutions. This section is ready
+            for a fuller biography, education details, interests, and technical profile.
+          </p>
+        </section>
+
+        <section id="projects" className={styles.section} aria-labelledby="projects-heading">
+          <h2 id="projects-heading" className={styles.sectionTitle}>
+            My Projects
+          </h2>
+          <Projects />
+        </section>
+
+        <section id="experiences" className={styles.section} aria-labelledby="experiences-heading">
+          <h2 id="experiences-heading" className={styles.sectionTitle}>
+            My Experiences
+          </h2>
+          <div className={styles.experienceGrid}>
+            <article className={styles.experienceCard}>
+              <Text variant="heading-strong-m">Academic Journey</Text>
+              <Text onBackground="neutral-weak">
+                Undergraduate Computer Science Student at Universitas Indonesia.
+              </Text>
+            </article>
+            <article className={styles.experienceCard}>
+              <Text variant="heading-strong-m">Software Development</Text>
+              <Text onBackground="neutral-weak">
+                Building web, mobile, and software projects while growing a practical engineering
+                portfolio.
+              </Text>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" className={styles.section} aria-labelledby="contact-heading">
+          <h2 id="contact-heading" className={styles.sectionTitle}>
+            Contact Me!
+          </h2>
+          <p className={styles.sectionIntro}>
+            Let us connect for collaborations, project discussions, or opportunities.
+          </p>
+          <Row className={styles.contactLinks} gap="16" wrap horizontal="center">
+            {social.map((item) => (
+              <IconButton
+                key={item.name}
+                href={item.link}
+                icon={item.icon}
+                tooltip={item.name}
+                size="l"
+                variant="secondary"
+              />
+            ))}
+          </Row>
+        </section>
       </Column>
     </Column>
   );

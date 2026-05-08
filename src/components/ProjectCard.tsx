@@ -11,7 +11,7 @@ import {
 } from "@once-ui-system/core";
 
 interface ProjectCardProps {
-  href: string;
+  href?: string;
   priority?: boolean;
   images: string[];
   title: string;
@@ -63,7 +63,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               </Text>
             )}
             <Flex gap="24" wrap>
-              {content?.trim() && (
+              {href && content?.trim() && (
                 <SmartLink
                   suffixIcon="arrowRight"
                   style={{ margin: "0", width: "fit-content" }}

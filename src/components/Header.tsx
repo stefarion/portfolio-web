@@ -1,14 +1,51 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, about, blog, work, gallery } from "@/resources";
 import styles from "./Header.module.scss";
 
+const navItems = [
+  { id: "home", href: "/#home", icon: "home" },
+  { id: "about", href: "/#about", icon: "person", label: "About" },
+  { id: "projects", href: "/#projects", icon: "projects", label: "Projects" },
+  { id: "experiences", href: "/#experiences", icon: "experiences", label: "Experiences" },
+  { id: "contact", href: "/#contact", icon: "contact", label: "Contact" },
+];
+
 export const Header = () => {
-  const pathname = usePathname() ?? "";
+  const [active, setActive] = useState(navItems[0].id);
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.42;
+
+      for (const item of navItems) {
+        const section = document.getElementById(item.id);
+
+        if (!section) {
+          continue;
+        }
+
+        const { offsetTop, offsetHeight } = section;
+
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          setActive(item.id);
+          break;
+        }
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   return (
     <Row
@@ -33,80 +70,31 @@ export const Header = () => {
         zIndex={1}
       >
         <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
-          {routes["/"] && <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />}
+          <ToggleButton
+            prefixIcon={navItems[0].icon}
+            href={navItems[0].href}
+            selected={active === navItems[0].id}
+          />
           <Line background="neutral-alpha-medium" vert maxHeight="24" />
-          {routes["/about"] && (
-            <>
+          {navItems.slice(1).map((item) => (
+            <Row key={item.id}>
               <Row s={{ hide: true }}>
                 <ToggleButton
-                  prefixIcon="person"
-                  href="/about"
-                  label={about.label}
-                  selected={pathname === "/about"}
-                />
-              </Row>
-              <Row hide s={{ hide: false }}>
-                <ToggleButton prefixIcon="person" href="/about" selected={pathname === "/about"} />
-              </Row>
-            </>
-          )}
-          {routes["/work"] && (
-            <>
-              <Row s={{ hide: true }}>
-                <ToggleButton
-                  prefixIcon="projects"
-                  href="/work"
-                  label={work.label}
-                  selected={pathname.startsWith("/work")}
+                  prefixIcon={item.icon}
+                  href={item.href}
+                  label={item.label}
+                  selected={active === item.id}
                 />
               </Row>
               <Row hide s={{ hide: false }}>
                 <ToggleButton
-                  prefixIcon="projects"
-                  href="/work"
-                  selected={pathname.startsWith("/work")}
+                  prefixIcon={item.icon}
+                  href={item.href}
+                  selected={active === item.id}
                 />
               </Row>
-            </>
-          )}
-          {routes["/blog"] && (
-            <>
-              <Row s={{ hide: true }}>
-                <ToggleButton
-                  prefixIcon="experiences"
-                  href="/blog"
-                  label={blog.label}
-                  selected={pathname.startsWith("/blog")}
-                />
-              </Row>
-              <Row hide s={{ hide: false }}>
-                <ToggleButton
-                  prefixIcon="experiences"
-                  href="/blog"
-                  selected={pathname.startsWith("/blog")}
-                />
-              </Row>
-            </>
-          )}
-          {routes["/gallery"] && (
-            <>
-              <Row s={{ hide: true }}>
-                <ToggleButton
-                  prefixIcon="contact"
-                  href="/gallery"
-                  label={gallery.label}
-                  selected={pathname.startsWith("/gallery")}
-                />
-              </Row>
-              <Row hide s={{ hide: false }}>
-                <ToggleButton
-                  prefixIcon="contact"
-                  href="/gallery"
-                  selected={pathname.startsWith("/gallery")}
-                />
-              </Row>
-            </>
-          )}
+            </Row>
+          ))}
         </Row>
       </Row>
     </Row>

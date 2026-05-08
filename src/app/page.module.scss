@@ -65,12 +65,12 @@
 }
 
 .eyebrow {
-  min-height: clamp(3rem, 6vw, 4.75rem);
-  margin-bottom: clamp(1.25rem, 2.2vw, 1.75rem);
+  min-height: clamp(2.5rem, 4.8vw, 4rem);
+  margin-bottom: clamp(1rem, 1.8vw, 1.35rem);
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 5.35vw, 5.75rem);
+  font-size: clamp(2.55rem, 4.35vw, 4.65rem);
   font-weight: 800;
-  line-height: 0.94;
+  line-height: 0.98;
 }
 
 .title {
@@ -137,6 +137,61 @@
   stroke-width: 1.8;
 }
 
+.main {
+  gap: clamp(5rem, 8vw, 8rem);
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(6rem, 10vw, 9rem);
+}
+
+.section {
+  width: 100%;
+  scroll-margin-top: 7rem;
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #f7f3ea;
+  text-align: center;
+}
+
+.sectionIntro {
+  width: min(46rem, 100%);
+  margin: 0 auto;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.75;
+  color: rgba(247, 243, 234, 0.74);
+  text-align: center;
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(56rem, 100%);
+  margin: 0 auto;
+}
+
+.experienceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 10rem;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+}
+
+.contactLinks {
+  margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
   .hero {
     align-items: center;
@@ -176,5 +231,22 @@
 
   .socialLinks {
     gap: 1rem;
+  }
+
+  .main {
+    gap: 4.5rem;
+    padding-top: 3.5rem;
+  }
+
+  .section {
+    scroll-margin-top: 6rem;
+  }
+
+  .sectionTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .experienceGrid {
+    grid-template-columns: 1fr;
   }
 }
