@@ -17,13 +17,20 @@ import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  return {
+    ...Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: home.image,
-  });
+    }),
+    icons: {
+      icon: "/icon.jpg",
+      shortcut: "/icon.jpg",
+      apple: "/icon.jpg",
+    },
+  };
 }
 
 export default async function RootLayout({
@@ -52,7 +59,7 @@ export default async function RootLayout({
               (function() {
                 try {
                   const root = document.documentElement;
-                  const defaultTheme = 'system';
+                  const defaultTheme = 'dark';
                   
                   // Set defaults from config
                   const config = ${JSON.stringify({
@@ -82,7 +89,7 @@ export default async function RootLayout({
                   };
                   
                   // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
+                  const savedTheme = localStorage.getItem('data-theme') || defaultTheme;
                   const resolvedTheme = resolveTheme(savedTheme);
                   root.setAttribute('data-theme', resolvedTheme);
                   

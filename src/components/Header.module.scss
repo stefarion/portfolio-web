@@ -1,5 +1,15 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.position {
+    top: var(--static-space-24);
+    pointer-events: none;
+}
+
+.navSurface {
+    pointer-events: auto;
+    backdrop-filter: blur(0.75rem);
+}
+
 .mask {
     pointer-events: none;
     backdrop-filter: blur(0.5rem);
@@ -10,8 +20,8 @@
 
 @media (max-width: breakpoints.$s) {
     .position {
-        top: auto;
-        bottom: var(--static-space-24);
+        top: var(--static-space-20);
+        bottom: auto;
     }
 
     .mask {

@@ -24,31 +24,31 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/stefarion",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/stefanus-tan-jaya",
     essential: true,
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
+    link: "https://www.instagram.com/stefanustanjaya/",
+    essential: true,
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "CV",
+    icon: "document",
+    link: "https://docs.google.com/document/d/1BOt7kxpcbJTMzgqzeNEQiE94pStoZ4_CWaFHSvt_9S0/edit?usp=sharing",
     essential: true,
   },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: "mailto:stefanustanjaya230105@gmail.com",
     essential: true,
   },
 ];
@@ -57,7 +57,7 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: "Stefanus Tan Jaya | stefarion",
   description:
     "Portfolio website for Stefanus Tan Jaya, an undergraduate computer science student at Universitas Indonesia.",
   headline: <>Hello and Welcome!</>,
@@ -227,7 +227,7 @@ const about: About = {
 
 const blog: Blog = {
   path: "/blog",
-  label: "Blog",
+  label: "Experiences",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
@@ -236,7 +236,7 @@ const blog: Blog = {
 
 const work: Work = {
   path: "/work",
-  label: "Work",
+  label: "Projects",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
@@ -245,7 +245,7 @@ const work: Work = {
 
 const gallery: Gallery = {
   path: "/gallery",
-  label: "Gallery",
+  label: "Contact",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one

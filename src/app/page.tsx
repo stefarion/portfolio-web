@@ -3,19 +3,56 @@ import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { HiOutlineDocumentText, HiOutlineEnvelope } from "react-icons/hi2";
 import styles from "./page.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  return {
+    ...Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: home.image,
-  });
+    }),
+    icons: {
+      icon: "/icon.jpg",
+      shortcut: "/icon.jpg",
+      apple: "/icon.jpg",
+    },
+  };
 }
 
 export default function Home() {
+  const heroLinks = [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/stefanus-tan-jaya",
+      icon: <FaLinkedin />,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/stefarion",
+      icon: <FaGithub />,
+    },
+    {
+      label: "CV",
+      href: "https://docs.google.com/document/d/1BOt7kxpcbJTMzgqzeNEQiE94pStoZ4_CWaFHSvt_9S0/edit?usp=sharing",
+      icon: <HiOutlineDocumentText />,
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/stefanustanjaya/",
+      icon: <FaInstagram />,
+    },
+    {
+      label: "Email",
+      href: "mailto:stefanustanjaya230105@gmail.com",
+      icon: <HiOutlineEnvelope />,
+    },
+  ];
+
   return (
     <Column fillWidth gap="xl" horizontal="center">
       <Schema
@@ -45,19 +82,38 @@ export default function Home() {
         </video>
         <div className={styles.tint} />
         <div className={styles.leftShade} />
-        <RevealFx className={styles.content} translateY="8" delay={0.1}>
+        <div className={styles.content}>
           <p className={styles.eyebrow}>Hello and Welcome!</p>
           <h1 id="home-hero-title" className={styles.title}>
-            I'm Stefanus Tan Jaya
+            I'm Stefanus Tan Jaya.
           </h1>
           <p className={styles.description}>
-            An Undergraduate Computer Science Student at Universitas Indonesia based in Jakarta,
-            Indonesia.
+            A{" "}
+            <span className={styles.strong}>Software Engineer</span>{" "}
+            based in Jakarta, Indonesia.
+            <br className={styles.desktopBreak} />
+            Interested in building <span className={styles.strong}>web applications</span>,{" "}
+            <span className={styles.strong}>mobile apps</span>,
+            <br className={styles.desktopBreak} />
+            and{" "}
+            <span className={styles.strong}>software solutions</span>.
           </p>
-          <p className={styles.description}>
-            Interested in building web applications, mobile apps, and software solutions.
-          </p>
-        </RevealFx>
+          <ul className={styles.socialLinks} aria-label="Social links">
+            {heroLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  className={styles.socialLink}
+                  href={link.href}
+                  aria-label={link.label}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                >
+                  {link.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
       <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
         <RevealFx translateY="16" delay={0.2}>

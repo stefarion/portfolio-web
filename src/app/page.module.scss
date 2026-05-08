@@ -3,12 +3,12 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  min-height: 100svh;
-  margin-top: calc(-1 * (var(--static-space-80) + var(--static-space-l)));
+  min-height: calc(100svh + var(--static-space-16) + var(--responsive-space-l));
+  margin-top: calc(-1 * (var(--static-space-16) + var(--responsive-space-l)));
   margin-right: calc(50% - 50vw);
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  background: #02050d;
+  background: #050608;
   isolation: isolate;
 }
 
@@ -32,7 +32,7 @@
 .tint {
   z-index: 1;
   background:
-    linear-gradient(to bottom, rgba(2, 5, 13, 0.22), rgba(2, 5, 13, 0.42)),
+    linear-gradient(to bottom, rgba(2, 5, 13, 0.18) 0%, rgba(2, 5, 13, 0.36) 72%, #050608 100%),
     rgba(2, 5, 13, 0.18);
 }
 
@@ -40,15 +40,19 @@
   z-index: 2;
   background:
     radial-gradient(circle at 22% 52%, rgba(0, 0, 0, 0.26), transparent 34rem),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.52) 30%, transparent 68%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.52) 30%, transparent 68%),
+    linear-gradient(to bottom, transparent 76%, #050608 100%);
 }
 
 .content {
   position: relative;
   z-index: 3;
-  width: min(46rem, calc(100% - 3rem));
-  margin-left: clamp(1.5rem, 8vw, 13.5rem);
-  padding-top: clamp(5rem, 12vh, 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: min(42rem, calc(100% - 3rem));
+  margin-left: clamp(3rem, 9.5vw, 11rem);
+  margin-top: -3.75rem;
   color: #ffffff;
   text-shadow: 0 0.125rem 1.5rem rgba(0, 0, 0, 0.5);
 }
@@ -61,60 +65,116 @@
 }
 
 .eyebrow {
-  margin-bottom: 1.25rem;
+  min-height: clamp(3rem, 6vw, 4.75rem);
+  margin-bottom: clamp(1.25rem, 2.2vw, 1.75rem);
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(3rem, 5.35vw, 5.75rem);
   font-weight: 800;
-  line-height: 0.98;
+  line-height: 0.94;
 }
 
 .title {
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(0.75rem, 1.35vw, 1.25rem);
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 2.55vw, 2.5rem);
   font-weight: 750;
-  line-height: 1.08;
+  line-height: 1.15;
 }
 
 .description {
-  max-width: 44rem;
+  max-width: 40rem;
   font-family: var(--font-body);
-  font-size: clamp(1.125rem, 1.7vw, 1.55rem);
+  font-size: clamp(1rem, 1.28vw, 1.18rem);
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
 }
 
-.description + .description {
-  margin-top: 0.35rem;
+.strong {
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.desktopBreak {
+  display: block;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: center;
+  padding: 0;
+  margin: clamp(1.25rem, 2.4vw, 1.75rem) 0 0;
+  list-style: none;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(1.75rem, 2.4vw, 2.25rem);
+  height: clamp(1.75rem, 2.4vw, 2.25rem);
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: #ffffff;
+  transform: translateY(-0.125rem);
+  filter: drop-shadow(0 0 0.75rem rgba(84, 180, 226, 0.45));
+  outline: none;
+}
+
+.socialLink svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.8;
 }
 
 @media (max-width: 768px) {
   .hero {
-    align-items: flex-end;
-    min-height: 100svh;
-    margin-top: calc(-1 * (var(--static-space-56) + var(--static-space-l)));
+    align-items: center;
+    min-height: calc(100svh + var(--static-space-16) + var(--responsive-space-l));
+    margin-top: calc(-1 * (var(--static-space-16) + var(--responsive-space-l)));
   }
 
   .leftShade {
     background:
-      linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.44) 55%, transparent 100%),
+      linear-gradient(to top, #050608 0%, rgba(0, 0, 0, 0.82) 12%, rgba(0, 0, 0, 0.44) 58%, transparent 100%),
       linear-gradient(90deg, rgba(0, 0, 0, 0.44), transparent 72%);
   }
 
   .content {
-    width: min(100% - 2rem, 36rem);
+    width: min(100% - 2rem, 34rem);
     margin-right: auto;
-    margin-bottom: clamp(4.5rem, 12vh, 7rem);
-    margin-left: 1rem;
-    padding-top: 7rem;
+    margin-left: 1.25rem;
+    margin-top: 2.5rem;
   }
 
   .eyebrow {
     margin-bottom: 1rem;
+    line-height: 1;
   }
 
   .title {
     margin-bottom: 1.15rem;
+  }
+
+  .description {
+    line-height: 1.62;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .socialLinks {
+    gap: 1rem;
   }
 }

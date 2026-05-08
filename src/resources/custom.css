@@ -1,6 +1,11 @@
 html,
 body {
+  background: #050608;
   overflow-x: hidden;
+}
+
+html[data-theme="dark"] body {
+  --page-background: #050608;
 }
 
 /* :root {
