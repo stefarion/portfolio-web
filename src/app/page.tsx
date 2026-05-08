@@ -1,6 +1,7 @@
-import { Column, IconButton, Row, Schema, Meta, Text } from "@once-ui-system/core";
-import { home, about, person, baseURL, social } from "@/resources";
+import { Column, Schema, Meta } from "@once-ui-system/core";
+import { home, about, person, baseURL } from "@/resources";
 import { SpotifyArtists } from "@/components/about/SpotifyArtists";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
 import Image from "next/image";
 import { FaFutbol, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
@@ -19,11 +20,11 @@ import styles from "./page.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: home.image,
     }),
     icons: {
       icon: "/icon.jpg",
@@ -92,6 +93,37 @@ export default function Home() {
       label: "Email",
       href: "mailto:stefanustanjaya230105@gmail.com",
       icon: <HiOutlineEnvelope />,
+    },
+  ];
+
+  const experiences = [
+    {
+      title: "Teaching Assistant of Linear Algebra",
+      organization: "Faculty of Computer Science, University of Indonesia",
+      logo: "/media/experiences/fasilkom.png",
+      description:
+        "Assisted course activities for Linear Algebra by supporting classroom learning, helping students understand core mathematical concepts, and contributing to a more structured academic experience.",
+    },
+    {
+      title: "Staff of Indie Game Ignite Competition Division",
+      organization: "COMPFEST 16",
+      logo: "/media/experiences/compfest16.png",
+      description:
+        "Contributed to the competition division by helping organize the Indie Game Ignite program, coordinating participant-facing needs, and supporting the execution of a student-led technology event.",
+    },
+    {
+      title: "Chairman of Catholic Student Community Organization",
+      organization: "ROHKAT SMAN 14 Jakarta",
+      logo: "/media/experiences/sman14.jpg",
+      description:
+        "Led the Catholic student community organization by coordinating activities, encouraging member participation, and maintaining collaboration across school community initiatives.",
+    },
+    {
+      title: "Vice President of IT-Tech 14",
+      organization: "IT-Tech 14",
+      logo: "/media/experiences/it-tech14.jpg",
+      description:
+        "Supported organizational leadership in planning and coordinating technology-related student activities while helping maintain communication between members and project teams.",
     },
   ];
 
@@ -227,20 +259,25 @@ export default function Home() {
           <h2 id="experiences-heading" className={styles.sectionTitle}>
             My Experiences
           </h2>
-          <div className={styles.experienceGrid}>
-            <article className={styles.experienceCard}>
-              <Text variant="heading-strong-m">Academic Journey</Text>
-              <Text onBackground="neutral-weak">
-                Undergraduate Computer Science Student at Universitas Indonesia.
-              </Text>
-            </article>
-            <article className={styles.experienceCard}>
-              <Text variant="heading-strong-m">Software Development</Text>
-              <Text onBackground="neutral-weak">
-                Building web, mobile, and software projects while growing a practical engineering
-                portfolio.
-              </Text>
-            </article>
+          <div className={styles.experienceList}>
+            {experiences.map((experience) => (
+              <article className={styles.experienceCard} key={experience.title}>
+                <Image
+                  src={experience.logo}
+                  alt={`${experience.organization} logo`}
+                  width={64}
+                  height={64}
+                  className={styles.experienceLogo}
+                />
+                <div className={styles.experienceBody}>
+                  <div className={styles.experienceHeader}>
+                    <h3>{experience.title}</h3>
+                    <p>{experience.organization}</p>
+                  </div>
+                  <p className={styles.experienceDescription}>{experience.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -248,21 +285,7 @@ export default function Home() {
           <h2 id="contact-heading" className={styles.sectionTitle}>
             Contact Me!
           </h2>
-          <p className={styles.sectionIntro}>
-            Let us connect for collaborations, project discussions, or opportunities.
-          </p>
-          <Row className={styles.contactLinks} gap="16" wrap horizontal="center">
-            {social.map((item) => (
-              <IconButton
-                key={item.name}
-                href={item.link}
-                icon={item.icon}
-                tooltip={item.name}
-                size="l"
-                variant="secondary"
-              />
-            ))}
-          </Row>
+          <ContactForm />
         </section>
       </Column>
     </Column>

@@ -1,5 +1,9 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.footerText {
+    text-align: center;
+}
+
 @media (max-width: breakpoints.$s) {
     .mobile {
         text-align: center;

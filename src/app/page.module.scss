@@ -315,23 +315,67 @@
   line-height: 1.45;
 }
 
-.experienceGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.experienceList {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  width: min(56rem, 100%);
+  width: min(42rem, 100%);
   margin: 0 auto;
 }
 
 .experienceCard {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-height: 10rem;
-  padding: clamp(1.25rem, 2vw, 1.75rem);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
   background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.75rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.18);
+}
+
+.experienceLogo {
+  width: 3.75rem;
+  height: 3.75rem;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+}
+
+.experienceBody {
+  min-width: 0;
+}
+
+.experienceHeader h3,
+.experienceHeader p,
+.experienceDescription {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.experienceHeader h3 {
+  color: #56c7ff;
+  font-family: var(--font-heading);
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.experienceHeader p {
+  margin-top: 0.3rem;
+  color: rgba(247, 243, 234, 0.78);
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.experienceDescription {
+  margin-top: 1rem;
+  color: rgba(247, 243, 234, 0.72);
+  font-size: clamp(0.98rem, 1.45vw, 1.08rem);
+  font-weight: 560;
+  line-height: 1.58;
 }
 
 .contactLinks {
@@ -405,7 +449,13 @@
     grid-template-columns: 1fr;
   }
 
-  .experienceGrid {
-    grid-template-columns: 1fr;
+  .experienceCard {
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .experienceLogo {
+    width: 3.2rem;
+    height: 3.2rem;
   }
 }
