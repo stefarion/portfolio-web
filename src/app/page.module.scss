@@ -1,0 +1,120 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  min-height: 100svh;
+  margin-top: calc(-1 * (var(--static-space-80) + var(--static-space-l)));
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  background: #02050d;
+  isolation: isolate;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.tint,
+.leftShade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tint {
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(2, 5, 13, 0.22), rgba(2, 5, 13, 0.42)),
+    rgba(2, 5, 13, 0.18);
+}
+
+.leftShade {
+  z-index: 2;
+  background:
+    radial-gradient(circle at 22% 52%, rgba(0, 0, 0, 0.26), transparent 34rem),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.52) 30%, transparent 68%);
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  width: min(46rem, calc(100% - 3rem));
+  margin-left: clamp(1.5rem, 8vw, 13.5rem);
+  padding-top: clamp(5rem, 12vh, 8rem);
+  color: #ffffff;
+  text-shadow: 0 0.125rem 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+.eyebrow,
+.title,
+.description {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 0.98;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 750;
+  line-height: 1.08;
+}
+
+.description {
+  max-width: 44rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.7vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.description + .description {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: flex-end;
+    min-height: 100svh;
+    margin-top: calc(-1 * (var(--static-space-56) + var(--static-space-l)));
+  }
+
+  .leftShade {
+    background:
+      linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.44) 55%, transparent 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.44), transparent 72%);
+  }
+
+  .content {
+    width: min(100% - 2rem, 36rem);
+    margin-right: auto;
+    margin-bottom: clamp(4.5rem, 12vh, 7rem);
+    margin-left: 1rem;
+    padding-top: 7rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    margin-bottom: 1.15rem;
+  }
+}
