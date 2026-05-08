@@ -1,0 +1,261 @@
+.showcase {
+  width: min(56rem, 100%);
+  margin: 0 auto;
+  overflow: hidden;
+  background: rgba(6, 7, 9, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.28);
+}
+
+.mediaFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #08090b;
+}
+
+.projectImage {
+  object-fit: cover;
+  object-position: center;
+  animation: imageFade 240ms ease;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #f7f3ea;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999rem;
+  opacity: 0.82;
+  transform: translateY(-50%);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.navButton:hover,
+.navButton:focus-visible {
+  background: rgba(19, 22, 27, 0.86);
+  border-color: rgba(255, 255, 255, 0.28);
+  opacity: 1;
+  outline: none;
+}
+
+.navButton svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.navPrevious {
+  left: 1rem;
+}
+
+.navPrevious:hover,
+.navPrevious:focus-visible {
+  transform: translate(-0.125rem, -50%);
+}
+
+.navNext {
+  right: 1rem;
+}
+
+.navNext:hover,
+.navNext:focus-visible {
+  transform: translate(0.125rem, -50%);
+}
+
+.progress {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.25rem;
+  padding: 0.75rem 1rem 0;
+}
+
+.progressItem {
+  height: 0.2rem;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.16);
+  border: 0;
+  border-radius: 999rem;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.progressItem:hover,
+.progressItem:focus-visible,
+.progressItem.active {
+  background: #f7f3ea;
+  outline: none;
+}
+
+.progressItem.active {
+  transform: scaleY(1.35);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 14rem;
+  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  background: #070809;
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.detailsHeader h3 {
+  max-width: 34rem;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.35vw, 2rem);
+  font-weight: 850;
+  line-height: 1.2;
+  color: #f7f3ea;
+  letter-spacing: 0;
+}
+
+.description {
+  max-width: 43rem;
+  margin: 0;
+  color: rgba(247, 243, 234, 0.68);
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 1.3vw, 1.08rem);
+  font-weight: 550;
+  line-height: 1.58;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0;
+  margin: auto 0 0;
+  list-style: none;
+}
+
+.techItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.15rem;
+  padding: 0 0.75rem;
+  color: rgba(247, 243, 234, 0.82);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999rem;
+}
+
+.techItem svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.techItem span {
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.links {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.6rem;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: rgba(247, 243, 234, 0.82);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999rem;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.linkButton:hover,
+.linkButton:focus-visible {
+  color: #ffffff;
+  background: rgba(84, 180, 226, 0.18);
+  border-color: rgba(84, 180, 226, 0.42);
+  outline: none;
+  transform: translateY(-0.125rem);
+}
+
+.linkButton svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@keyframes imageFade {
+  from {
+    opacity: 0.72;
+    transform: scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase {
+    border-radius: 0.65rem;
+  }
+
+  .mediaFrame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .navButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .navPrevious {
+    left: 0.75rem;
+  }
+
+  .navNext {
+    right: 0.75rem;
+  }
+
+  .details {
+    min-height: auto;
+  }
+
+  .detailsHeader {
+    align-items: center;
+  }
+
+  .description {
+    max-width: none;
+  }
+}

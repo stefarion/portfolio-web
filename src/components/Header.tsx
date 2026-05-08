@@ -19,7 +19,8 @@ export const Header = () => {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.42;
+      const activationLine = 84;
+      let currentActive = navItems[0].id;
 
       for (const item of navItems) {
         const section = document.getElementById(item.id);
@@ -28,13 +29,14 @@ export const Header = () => {
           continue;
         }
 
-        const { offsetTop, offsetHeight } = section;
+        const { top } = section.getBoundingClientRect();
 
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          setActive(item.id);
-          break;
+        if (top <= activationLine) {
+          currentActive = item.id;
         }
       }
+
+      setActive(currentActive);
     };
 
     updateActiveSection();
@@ -65,11 +67,11 @@ export const Header = () => {
         border="neutral-alpha-weak"
         radius="m-4"
         shadow="l"
-        padding="4"
+        padding="8"
         horizontal="center"
         zIndex={1}
       >
-        <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
+        <Row gap="8" vertical="center" textVariant="body-default-m" suppressHydrationWarning>
           <ToggleButton
             prefixIcon={navItems[0].icon}
             href={navItems[0].href}

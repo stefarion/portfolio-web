@@ -2,11 +2,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: calc(100% + (var(--responsive-space-l) * 2));
+  max-width: calc(100% + (var(--responsive-space-l) * 2));
   min-height: calc(100svh + var(--static-space-16) + var(--responsive-space-l));
   margin-top: calc(-1 * (var(--static-space-16) + var(--responsive-space-l)));
-  margin-right: calc(50% - 50vw);
-  margin-left: calc(50% - 50vw);
+  margin-right: calc(-1 * var(--responsive-space-l));
+  margin-left: calc(-1 * var(--responsive-space-l));
   overflow: hidden;
   background: #050608;
   isolation: isolate;

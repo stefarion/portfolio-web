@@ -8,6 +8,18 @@
 .navSurface {
     pointer-events: auto;
     backdrop-filter: blur(0.75rem);
+    font-size: 1.05rem;
+}
+
+.navSurface a,
+.navSurface button {
+    min-height: 2.75rem;
+    font-weight: 750;
+}
+
+.navSurface svg {
+    width: 1.18rem;
+    height: 1.18rem;
 }
 
 .mask {

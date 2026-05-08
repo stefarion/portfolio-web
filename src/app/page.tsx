@@ -1,7 +1,7 @@
 import { Column, IconButton, Row, Schema, Meta, Text } from "@once-ui-system/core";
 import { home, about, person, baseURL, social } from "@/resources";
-import { Projects } from "@/components/work/Projects";
 import { SpotifyArtists } from "@/components/about/SpotifyArtists";
+import { ProjectShowcase } from "@/components/projects/ProjectShowcase";
 import Image from "next/image";
 import { FaFutbol, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { HiOutlineDocumentText, HiOutlineEnvelope } from "react-icons/hi2";
@@ -220,7 +220,7 @@ export default function Home() {
           <h2 id="projects-heading" className={styles.sectionTitle}>
             My Projects
           </h2>
-          <Projects />
+          <ProjectShowcase />
         </section>
 
         <section id="experiences" className={styles.section} aria-labelledby="experiences-heading">
