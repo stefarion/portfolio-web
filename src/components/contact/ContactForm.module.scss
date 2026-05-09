@@ -85,6 +85,27 @@
   transform: translateY(-0.075rem);
 }
 
+.form button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+  transform: none;
+}
+
+.statusMessage {
+  margin: 0.85rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.success {
+  color: #77e7a3;
+}
+
+.error {
+  color: #ff8d8d;
+}
+
 .sidePanel {
   display: flex;
   flex-direction: column;

@@ -40,16 +40,41 @@ export function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatus("sending");
+    setStatusMessage("");
 
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error || "Failed to send message.");
+      }
+
+      setName("");
+      setEmail("");
+      setMessage("");
+      setStatus("success");
+      setStatusMessage("Message sent successfully. Thank you!");
+    } catch (error) {
+      setStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again later.",
+      );
+    }
   };
 
   return (
@@ -86,7 +111,19 @@ export function ContactForm() {
             required
           />
 
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending..." : "Send Message"}
+          </button>
+          {statusMessage ? (
+            <p
+              className={`${styles.statusMessage} ${
+                status === "success" ? styles.success : styles.error
+              }`}
+              role="status"
+            >
+              {statusMessage}
+            </p>
+          ) : null}
         </form>
       </div>
 

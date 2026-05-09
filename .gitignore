@@ -37,4 +37,7 @@ next-env.d.ts
 
 # others
 .agents
+.env
+.env.local
+.env.*.local
 .env.example
