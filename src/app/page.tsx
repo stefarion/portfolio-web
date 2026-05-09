@@ -81,7 +81,7 @@ export default function Home() {
     },
     {
       label: "CV",
-      href: "https://docs.google.com/document/d/1BOt7kxpcbJTMzgqzeNEQiE94pStoZ4_CWaFHSvt_9S0/edit?usp=sharing",
+      href: "https://docs.google.com/document/d/1e-MSYdlhmic6DBAqTGvKjeGoPShZXOMzVkEJRIgepKw/edit?usp=sharing",
       icon: <HiOutlineDocumentText />,
     },
     {
