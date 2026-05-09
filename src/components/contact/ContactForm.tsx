@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaDiscord, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import styles from "./ContactForm.module.scss";
 
@@ -18,6 +18,11 @@ const contactLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/stefanus-tan-jaya",
     icon: <FaLinkedin />,
+  },
+  {
+    label: "Discord",
+    href: "https://discordapp.com/users/745973494118088705",
+    icon: <FaDiscord />,
   },
   {
     label: "Instagram",
@@ -98,7 +103,7 @@ export function ContactForm() {
           className={styles.contactImage}
         />
         <p className={styles.reachText}>
-          or feel free to reach through Gmail, LinkedIn, Instagram, and Twitter/X!
+          or feel free to reach through Gmail, LinkedIn, Discord, Instagram, and Twitter/X!
         </p>
         <div className={styles.socialRow}>
           {contactLinks.map((link) => (

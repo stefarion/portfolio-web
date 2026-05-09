@@ -7,7 +7,9 @@
 
 .navSurface {
     pointer-events: auto;
-    backdrop-filter: blur(0.75rem);
+    background: rgba(20, 21, 23, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    backdrop-filter: blur(1rem) saturate(1.15);
     font-size: 1.05rem;
 }
 
