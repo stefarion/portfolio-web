@@ -55,10 +55,6 @@ export function ContactForm() {
   return (
     <div className={styles.contactCard}>
       <div className={styles.formPanel}>
-        <div className={styles.contactHeader}>
-          <h3>Contact Me!</h3>
-        </div>
-
         <form className={styles.form} onSubmit={handleSubmit}>
           <label htmlFor="contact-name">Name</label>
           <input

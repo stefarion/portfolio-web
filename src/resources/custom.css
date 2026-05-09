@@ -26,6 +26,10 @@ body,
   color: #f7f3ea;
 }
 
+a {
+  text-decoration-color: currentColor;
+}
+
 *,
 *::before,
 *::after {

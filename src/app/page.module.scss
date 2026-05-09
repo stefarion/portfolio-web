@@ -116,7 +116,7 @@
   justify-content: center;
   width: clamp(1.75rem, 2.4vw, 2.25rem);
   height: clamp(1.75rem, 2.4vw, 2.25rem);
-  color: rgba(255, 255, 255, 0.78);
+  color: #6cefff !important;
   text-decoration: none;
   transition:
     color 180ms ease,
@@ -126,7 +126,7 @@
 
 .socialLink:hover,
 .socialLink:focus-visible {
-  color: #ffffff;
+  color: #ffffff !important;
   transform: translateY(-0.125rem);
   filter: drop-shadow(0 0 0.75rem rgba(84, 180, 226, 0.45));
   outline: none;
@@ -135,6 +135,9 @@
 .socialLink svg {
   width: 100%;
   height: 100%;
+  color: inherit !important;
+  fill: currentColor;
+  stroke: currentColor;
   stroke-width: 1.8;
 }
 
@@ -172,16 +175,16 @@
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: minmax(17rem, 20rem) minmax(18rem, 1fr);
-  gap: clamp(1rem, 2.4vw, 1.75rem);
+  grid-template-columns: minmax(16rem, 18.5rem) minmax(18rem, 1fr);
+  gap: clamp(0.9rem, 2vw, 1.35rem);
   align-items: stretch;
-  width: min(54rem, 100%);
+  width: min(50rem, 100%);
   margin: 0 auto;
 }
 
 .profileFrame {
   position: relative;
-  min-height: 28rem;
+  min-height: 25.5rem;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -267,7 +270,7 @@
 }
 
 .interestCard {
-  width: min(54rem, 100%);
+  width: min(50rem, 100%);
   margin: 1rem auto 0;
 }
 
@@ -319,7 +322,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: min(42rem, 100%);
+  width: min(38rem, 100%);
   margin: 0 auto;
 }
 
@@ -327,7 +330,7 @@
   display: grid;
   grid-template-columns: 4rem minmax(0, 1fr);
   gap: 1.1rem;
-  padding: clamp(1.25rem, 2.4vw, 1.75rem);
+  padding: clamp(1.1rem, 2vw, 1.45rem);
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 0.75rem;
