@@ -152,7 +152,7 @@ export default function Home() {
           preload="auto"
           aria-hidden="true"
         >
-          <source src="/videos/firefly-astral-express-train.mp4" type="video/mp4" />
+          <source src="/videos/firefly-astral-express-train.webm" type="video/webm" />
         </video>
         <div className={styles.tint} />
         <div className={styles.leftShade} />
