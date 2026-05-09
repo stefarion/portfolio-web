@@ -16,6 +16,16 @@ body {
   color: #f7f3ea;
 }
 
+html,
+body,
+.page-background {
+  background-color: #050608 !important;
+}
+
+.page-background {
+  color: #f7f3ea;
+}
+
 *,
 *::before,
 *::after {
