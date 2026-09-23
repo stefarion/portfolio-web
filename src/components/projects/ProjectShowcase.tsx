@@ -7,11 +7,13 @@ import { HiArrowLeft, HiArrowRight, HiArrowTopRightOnSquare } from "react-icons/
 import {
   SiDart,
   SiDjango,
+  SiFastapi,
   SiFigma,
   SiFlutter,
   SiNextdotjs,
   SiPostgresql,
   SiReact,
+  SiRedis,
   SiSass,
   SiTypescript,
 } from "react-icons/si";
@@ -96,6 +98,18 @@ const projects: Project[] = [
         href: "https://singawas.cs.ui.ac.id/",
         icon: <HiArrowTopRightOnSquare />,
       },
+    ],
+  },
+  {
+    title: "FlowGate",
+    image: "/media/projects/flowgate-dashboard.png",
+    description:
+      "FlowGate is an in-development, API-first workflow approval and ticketing platform built to centralize operational requests. I developed role-based access control, visual workflow and approval-line configuration, dynamic forms, request and ticket lifecycles, checklists and attachments, SLA escalation, audit trails, notifications, webhooks, and reporting.",
+    tech: [
+      { label: "FastAPI", icon: <SiFastapi /> },
+      { label: "Next.js", icon: <SiNextdotjs /> },
+      { label: "PostgreSQL", icon: <SiPostgresql /> },
+      { label: "Redis", icon: <SiRedis /> },
     ],
   },
 ];

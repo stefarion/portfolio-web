@@ -98,6 +98,14 @@ export default function Home() {
 
   const experiences = [
     {
+      title: "IT Department Intern",
+      organization: "PT Sarana Abadi Makmur Bersama (SAMB)",
+      logo: "/media/experiences/samb-logo-enhanced-v2.png",
+      wideLogo: true,
+      description:
+        "Developed and maintained the company’s ERPNext system by implementing user requirements and enhancing features to support operational needs, while prototyping FlowGate for future approval workflow and ticketing operations.",
+    },
+    {
       title: "Teaching Assistant of Linear Algebra",
       organization: "Faculty of Computer Science, University of Indonesia",
       logo: "/media/experiences/fasilkom.png",
@@ -267,7 +275,7 @@ export default function Home() {
                   alt={`${experience.organization} logo`}
                   width={64}
                   height={64}
-                  className={styles.experienceLogo}
+                  className={`${styles.experienceLogo} ${experience.wideLogo ? styles.experienceLogoWide : ""}`}
                 />
                 <div className={styles.experienceBody}>
                   <div className={styles.experienceHeader}>
